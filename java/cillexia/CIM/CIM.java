@@ -1,3 +1,5 @@
+package cillexia.CIM;
+
 import java.text.DecimalFormat;
 
 /**
@@ -45,7 +47,7 @@ public final class CIM {
   public static final double round(double v) { return floor(v + 0.5); }
   public static final float round(float v) { return floor(v + 0.5f); }
   /** Rounds value to specified decimal format. Pass "00.00" for exact amount of digits, or use "##.##" to cut off unnecessary zeros. */
-  public static final String roundToString(double v, String decimalFormat) { return new DecimalFormat(decimalFormat).format(v).toString(); }
+  public static final String round(double v, String decimalFormat) { return new DecimalFormat(decimalFormat).format(v).toString(); }
   
   // ========== sqrt functions ==========
   public static final double sqrt(double v) { return Math.sqrt(v); }
@@ -59,9 +61,17 @@ public final class CIM {
   public static final double lerp(double t, double v0, double v1) { return (1.0f - t) * v0 + t * v1; }
   public static final float lerp(float t, float v0, float v1) { return (1.0f - t) * v0 + t * v1; }
   
-  // ========== ratio functions ==========
+  // ========== ratio functions MAX:MIN [0.0...1.0] ==========
+  public static final double ratio(double min, double max) { return 1.0/CIM.abs(max-min); }
+  public static final float ratio(float min, float max) { return 1.0f/CIM.abs(max-min); }
+  
+  // ========== ratio functions VALUE between MIN and MAX [0.0...1.0] ==========
   public static final double ratio(double value, double min, double max) { return min < max ? (value - min) / (max - min) : (value - max) / (min - max); }
   public static final float ratio(float value, float min, float max) { return min < max ? (value - min) / (max - min) : (value - max) / (min - max); }
+  
+  // ========== ratio functions VALUE between MIN and MAX [0.0...1.0] FAST VERSION with PRECALCULATED RATIO ==========
+  public static final double ratio(double value, double min, double max, double minMaxRatio) { return min < max ? (value - min) * minMaxRatio : (value - max) * minMaxRatio; }
+  public static final float ratio(float value, float min, float max, float minMaxRatio) { return min < max ? (value - min) * minMaxRatio : (value - max) * minMaxRatio; }
   
   // ========== map functions ==========
   public static final double map(double t, double tMin, double tMax, double map1, double map2) { return lerp(ratio(t, tMin, tMax), map1, map2); }
