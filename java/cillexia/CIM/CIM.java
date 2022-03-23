@@ -141,4 +141,62 @@ public final class CIM {
   * input xy [-1.0;1.0]
   * output [0.0;1.0] */
   public static final float squircle(float x, float y) { return 1.0f - CIM.min(CIM.sqrt(x*x*x*x + y*y*y*y), 1.0f); }
+  
+  // ========== link functions ==========
+  public static final double[] link(double[] a, double... b) {
+    final double[] result = new double[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
+  public static final float[] link(float[] a, float... b) {
+    final float[] result = new float[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
+  public static final long[] link(long[] a, long... b) {
+    final long[] result = new long[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
+  public static final int[] link(int[] a, int... b) {
+    final int[] result = new int[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
+  public static final String[] link(String[] a, String... b) {
+    final String[] result = new String[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
+  public static final char[] link(char[] a, char... b) {
+    final char[] result = new char[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
+  public static final short[] link(short[] a, short... b) {
+    final short[] result = new short[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
+  public static final byte[] link(byte[] a, byte... b) {
+    final byte[] result = new byte[a.length + b.length];
+    for(int i = 0; i < a.length; i++) result[i] = a[i];
+    int c = a.length;
+    for(int i = 0; i < b.length; i++) result[c++] = b[i];
+    return result;
+  }
 }
