@@ -1,6 +1,7 @@
-//package cillexia.CIM;
+package cillexia.CIM;
 
-import java.text.DecimalFormat;
+import java.util.*;
+import java.text.*;
 
 /**
 * CIM (Cillexia Math Library): A cillexia project by Christian Bietsch
@@ -46,7 +47,7 @@ public final class CIM {
   // ========== round functions ==========
   /** Rounds value to specified decimal format. Pass "00.00" for exact amount of digits, or use "##.##" to cut off unnecessary zeros. */
   public static final String round(DecimalFormat decimalFormat, double v) { return decimalFormat.format(v).toString(); }
-  public static final String round(String decimalFormat, double v) { return round(new DecimalFormat(decimalFormat), v); }
+  public static final String round(String decimalFormat, double v) { return round(new DecimalFormat(decimalFormat, new DecimalFormatSymbols(Locale.US)), v); }
   public static final double round(double v, String decimalFormat) { return Double.parseDouble(round(decimalFormat, v)); }
   public static final float round(float v, String decimalFormat) { return Float.parseFloat(round(decimalFormat, v)); }
   public static final double round(double v) { return floor(v + 0.5); }
