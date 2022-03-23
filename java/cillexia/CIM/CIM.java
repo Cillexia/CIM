@@ -1,4 +1,4 @@
-package cillexia.CIM;
+//package cillexia.CIM;
 
 import java.text.DecimalFormat;
 
@@ -44,10 +44,13 @@ public final class CIM {
   public static final float ceil(float v) { return v < 0 ? (int)v : (int)v+1; }
   
   // ========== round functions ==========
+  /** Rounds value to specified decimal format. Pass "00.00" for exact amount of digits, or use "##.##" to cut off unnecessary zeros. */
+  public static final String round(DecimalFormat decimalFormat, double v) { return decimalFormat.format(v).toString(); }
+  public static final String round(String decimalFormat, double v) { return round(new DecimalFormat(decimalFormat), v); }
+  public static final double round(double v, String decimalFormat) { return Double.parseDouble(round(decimalFormat, v)); }
+  public static final float round(float v, String decimalFormat) { return Float.parseFloat(round(decimalFormat, v)); }
   public static final double round(double v) { return floor(v + 0.5); }
   public static final float round(float v) { return floor(v + 0.5f); }
-  /** Rounds value to specified decimal format. Pass "00.00" for exact amount of digits, or use "##.##" to cut off unnecessary zeros. */
-  public static final String round(double v, String decimalFormat) { return new DecimalFormat(decimalFormat).format(v).toString(); }
   
   // ========== sqrt functions ==========
   public static final double sqrt(double v) { return Math.sqrt(v); }
